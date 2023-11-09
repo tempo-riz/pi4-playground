@@ -46,16 +46,17 @@ with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as server_socket:
 
                 command = data.decode().strip()
 
-                if command == "W":
+                if(isInRange()):
+                    robot.stop()
+                elif command == "haut":
                     robot.value = forward
-                elif command == "S":
+                elif command == "bas":
                     robot.value = backward
-                elif command == "A":
+                elif command == "gauche":
                     robot.value = left_turn
-                elif command == "D":
+                elif command == "droite":
                     robot.value = right_turn
-
-                time.sleep(1)
-
+                else:
+                    robot.stop()
 
                 print(f"Received command: {command}")
