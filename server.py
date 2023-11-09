@@ -1,4 +1,5 @@
 import socket
+import time
 from gpiozero import CamJamKitRobot, DistanceSensor
 
 # Define GPIO pins to use for the distance sensor
@@ -53,5 +54,8 @@ with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as server_socket:
                     robot.value = left_turn
                 elif command == "D":
                     robot.value = right_turn
+
+                time.sleep(1)
+
 
                 print(f"Received command: {command}")
