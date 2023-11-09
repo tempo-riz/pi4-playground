@@ -15,8 +15,8 @@ sensor = DistanceSensor(echo=pinecho, trigger=pintrigger)
 min_distance = 15.0
 
 # Set the relative speeds of the two motors, between 0.0 and 1.0
-leftmotorspeed = 0.5
-rightmotorspeed = 0.5
+leftmotorspeed = 0.1
+rightmotorspeed = 0.1
 
 motorforward = (leftmotorspeed, rightmotorspeed)
 motorbackward = (-leftmotorspeed, -rightmotorspeed)
