@@ -24,3 +24,13 @@ desktop gui -> reboot
 ssh pi@pi.local
 get ip address: 
 hostname -I
+
+## Virtual Environment
+
+create : python -m venv myenv
+
+windows : myenv\Scripts\activate
+
+mac/linux: source myenv/bin/activate
+
+quit : deactivate

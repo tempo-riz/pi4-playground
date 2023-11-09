@@ -21,7 +21,9 @@ left = (left_speed, 0)
 right = (0, right_speed)
 
 
-def isInRange(): return (sensor.distance * 100) < min_distance
+def isInRange(): 
+    print("distance: " + str(sensor.distance * 100))
+    return (sensor.distance * 100) < min_distance
 
 try:
     while True:
