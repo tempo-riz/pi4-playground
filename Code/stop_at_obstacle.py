@@ -38,10 +38,13 @@ def isnearobstacle(localhownear):
 
 try:
     while True:
-        robot.value = motorforward
         time.sleep(0.1)
         if isnearobstacle(min_distance):
             robot.stop()
+        else:
+            robot.value = motorforward
+            
+            
 
 # If you press CTRL+C, cleanup and stop
 except KeyboardInterrupt:
