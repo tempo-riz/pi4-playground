@@ -11,8 +11,8 @@ sensor = DistanceSensor(echo=pin_echo, trigger=pin_trigger)
 
 # Variables
 min_distance = 30.0
-left_speed = 0.3
-right_speed = 0.3
+left_speed = 0.5
+right_speed = 0.5
 
 forward = (left_speed, right_speed)
 backward = (-left_speed, -right_speed)
@@ -47,10 +47,7 @@ with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as server_socket:
 
                 if command == "haut":
                     print("up")
-                    if(isInRange()):
-                        robot.stop()
-                    else:
-                        robot.value = forward
+                    robot.value = forward
                 elif command == "bas":
                     print("down")
                     robot.value = backward
@@ -60,7 +57,11 @@ with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as server_socket:
                 elif command == "gauche":
                     print("left")
                     robot.value = right_turn
-                else: # any other command will stop
+                else: # any other key will stop
+                    robot.stop()
+
+                # avoid walls
+                if(isInRange() and command != "haut"):
                     robot.stop()
                 
                 time.sleep(0.1)
