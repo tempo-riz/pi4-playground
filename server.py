@@ -10,7 +10,7 @@ robot = CamJamKitRobot()
 sensor = DistanceSensor(echo=pin_echo, trigger=pin_trigger)
 
 # Variables
-min_distance = 15.0
+min_distance = 30.0
 left_speed = 0.3
 right_speed = 0.3
 
@@ -45,11 +45,12 @@ with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as server_socket:
 
                 command = data.decode().strip()
 
-                if(isInRange()):
-                    robot.stop()
-                elif command == "haut":
+                if command == "haut":
                     print("up")
-                    robot.value = forward
+                    if(isInRange()):
+                        robot.stop()
+                    else:
+                        robot.value = forward
                 elif command == "bas":
                     print("down")
                     robot.value = backward
@@ -59,7 +60,7 @@ with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as server_socket:
                 elif command == "gauche":
                     print("left")
                     robot.value = right_turn
-                else:
+                else: # any other command will stop
                     robot.stop()
                 
                 time.sleep(0.1)
