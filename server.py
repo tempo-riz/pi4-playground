@@ -16,8 +16,8 @@ right_speed = 0.3
 
 forward = (left_speed, right_speed)
 backward = (-left_speed, -right_speed)
-left_turn = (left_speed, 0)
-right_turn = (0, right_speed)
+left_turn = (left_speed, -right_speed)
+right_turn = (-left_speed, right_speed)
 
 def isInRange():
     if (sensor.distance * 100) < min_distance:
@@ -52,9 +52,9 @@ with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as server_socket:
                     robot.value = forward
                 elif command == "bas":
                     robot.value = backward
-                elif command == "gauche":
-                    robot.value = left_turn
                 elif command == "droite":
+                    robot.value = left_turn
+                elif command == "gauche":
                     robot.value = right_turn
                 else:
                     robot.stop()
