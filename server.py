@@ -63,6 +63,3 @@ with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as server_socket:
                 # avoid walls
                 if(isInRange() and command != "haut"):
                     robot.stop()
-                
-                time.sleep(0.1)
-
